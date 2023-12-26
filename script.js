@@ -33,24 +33,41 @@
   }
 
   function endGame(winningPattern) {
-    gameActive = false;
     if (winningPattern) {
       winningPattern.forEach(index => {
         document.getElementById(`cell-${index}`).classList.add('winner');
       });
+      playerWins[currentPlayer]++;
+      updatePlayerWins();
     }
+  
+    gameActive = false;
+  
     playAgainButton.style.display = 'block';
   }
+  
 
   function updatePlayerWins() {
-    player0.innerHTML = `Queen (<img src="https://cdn-icons-png.flaticon.com/512/1600/1600918.png" alt="Queen" height="40">) Wins: ${playerWins[0]}`;
-    player1.innerHTML = `King (<img src="https://drive.google.com/file/d/1Jjc3dRw7xW2ttKgqLcXVQ4-x0b8dI9zs/view?usp=sharing" alt="King" height="40">) Wins: ${playerWins[1]}`;
+    const playerSymbols = ['Queen', 'King'];
+  
+    player0.innerHTML = `${playerSymbols[0]} (<img src="queen.png" alt="Queen" height="40">) Wins: ${playerWins[0]}`;
+    player1.innerHTML = `${playerSymbols[1]} (<img src="king.png" alt="King" height="40">) Wins: ${playerWins[1]}`;
+  
+    // Check if there's a winner and update the players' div
+    if (playerWins[currentPlayer] > 0) {
+      players.textContent = `${playerSymbols[currentPlayer]} Wins!`;
+    } else if (boardState.every(cell => cell !== '')) {
+      players.textContent = "It's a Draw!";
+    }
   }
+  
+  
+  
 
   function handleClick(index) {
     if (!gameActive || boardState[index] !== '') return;
 
-    const symbol = currentPlayer === 0 ? '<img src="https://cdn-icons-png.flaticon.com/512/1600/1600918.png" alt="Queen" height="40">' : '<img src="https://png.pngtree.com/png-vector/20220629/ourmid/pngtree-blue-king-icon-flat-vector-png-image_5523073.png" alt="King" height="40">';
+    const symbol = currentPlayer === 0 ? '<img src="queen.png" alt="Queen" height="40">' : '<img src="king.png" alt="King" height="40">';
     boardState[index] = symbol;
     document.getElementById(`cell-${index}`).innerHTML = symbol;
 
@@ -85,8 +102,8 @@
 
     // Reset the players display
     players.innerHTML = `
-      <div id="player0">Player 0 (<img src="https://cdn-icons-png.flaticon.com/512/1600/1600918.png" alt="Queen" height="40">) Wins: ${playerWins[0]}</div>
-      <div id="player1">Player 1 (<img src="https://drive.google.com/file/d/1Jjc3dRw7xW2ttKgqLcXVQ4-x0b8dI9zs/view?usp=sharing" alt="King" height="40">) Wins: ${playerWins[1]}</div>
+      <div id="player0">Player 0 (<img src="queen.png" alt="Queen" height="40">) Wins: ${playerWins[0]}</div>
+      <div id="player1">Player 1 (<img src="king.png" alt="King" height="40">) Wins: ${playerWins[1]}</div>
     `;
   }
 
