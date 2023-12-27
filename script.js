@@ -50,8 +50,8 @@
   function updatePlayerWins() {
     const playerSymbols = ['Queen', 'King'];
   
-    player0.innerHTML = `${playerSymbols[0]} (<img src="queen.png" alt="Queen" height="40">) Wins: ${playerWins[0]}`;
-    player1.innerHTML = `${playerSymbols[1]} (<img src="king.png" alt="King" height="40">) Wins: ${playerWins[1]}`;
+    player0.innerHTML = `${playerSymbols[0]} (<img src="queen.png" alt="Queen" height="80">) Wins: ${playerWins[0]}`;
+    player1.innerHTML = `${playerSymbols[1]} (<img src="king.png" alt="King" height="80">) Wins: ${playerWins[1]}`;
   
     // Check if there's a winner and update the players' div
     if (playerWins[currentPlayer] > 0) {
@@ -67,7 +67,7 @@
   function handleClick(index) {
     if (!gameActive || boardState[index] !== '') return;
 
-    const symbol = currentPlayer === 0 ? '<img src="queen.png" alt="Queen" height="40">' : '<img src="king.png" alt="King" height="40">';
+    const symbol = currentPlayer === 0 ? '<img src="queen.png" alt="Queen" height="40">' : '<img src="king.png" alt="King" height="80">';
     boardState[index] = symbol;
     document.getElementById(`cell-${index}`).innerHTML = symbol;
 
@@ -102,8 +102,8 @@
 
     // Reset the players display
     players.innerHTML = `
-      <div id="player0">Player 0 (<img src="queen.png" alt="Queen" height="40">) Wins: ${playerWins[0]}</div>
-      <div id="player1">Player 1 (<img src="king.png" alt="King" height="40">) Wins: ${playerWins[1]}</div>
+      <div id="player0">Queen(<img src="queen.png" alt="Queen" height="40">) Wins: ${playerWins[0]}</div>
+      <div id="player1">King(<img src="king.png" alt="King" height="40">) Wins: ${playerWins[1]}</div>
     `;
   }
 
