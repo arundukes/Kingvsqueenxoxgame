@@ -67,7 +67,7 @@
   function handleClick(index) {
     if (!gameActive || boardState[index] !== '') return;
 
-    const symbol = currentPlayer === 0 ? '<img src="queen.png" alt="Queen" height="40">' : '<img src="king.png" alt="King" height="80">';
+    const symbol = currentPlayer === 0 ? '<img src="queen.png" alt="Queen" height="80">' : '<img src="king.png" alt="King" height="80">';
     boardState[index] = symbol;
     document.getElementById(`cell-${index}`).innerHTML = symbol;
 
