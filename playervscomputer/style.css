@@ -1,1 +1,55 @@
+ body {
+      background-color: #fa1955;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
+    #game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 5px;
+    }
+
+    .tile {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      font-size: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .winner {
+      color: #004080; /* Dark Blue */
+    }
+
+    #players {
+      text-align: center;
+      color: white;
+      font-size: 1.2em;
+    }
+
+    #play-again {
+      background-color: white;
+      color: #fa1955;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
